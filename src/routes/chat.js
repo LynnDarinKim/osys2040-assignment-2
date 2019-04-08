@@ -1,6 +1,7 @@
 const express = require('express')
 const createError = require('http-errors')
 const Chat = require('../model/chat')
+const Likes = require('../model/like')
 
 const router = express.Router()
 
@@ -17,7 +18,8 @@ router.get('/chat', async function getMessages(req, res, next) {
 })
 
 router.post('/chat/:messageId/like', async function userLikes(req, res, next) {
-  console.log('req.body.like:', req.body.like)
+  //console.log('req.body.like:', req.body.like)
+  await Likes.createLike(res.locals.signedInAs, res.locals.req.params.messageId)
 
   // TODO: if (req.body.like) add like to model
   // TODO: else remove like from model

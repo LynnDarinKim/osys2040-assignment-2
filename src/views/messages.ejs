@@ -13,9 +13,10 @@
           <%= message.created_by %>: <%= message.data.message %>
           <br/>
 
-          <!-- TODO: Make this prettier -->
-          likeCount: <%= likeCount %>
-          iLikeThis: <%= iLikeThis %>
+         <!--<%= JSON.stringify(message) %>-->
+	 <!-- TODO: Make this prettier -->
+          likeCount: <%= message.like_count %>
+         <!--  iLikeThis: <%= iLikeThis %> -->
           <form action="/chat/<%=message.id%>/like" method="post">
             <input type="hidden" id="like" name="like" value="<%=!iLikeThis%>">
             <button type="submit">Like</button>
